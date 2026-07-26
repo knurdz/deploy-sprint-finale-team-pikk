@@ -25,6 +25,7 @@ export function AuthStatus() {
   }, []);
 
   const handleLogout = async () => {
+    // T20: Logout functionality
     await fetch('/auth/logout', { method: 'POST' });
     setUser(null);
   };

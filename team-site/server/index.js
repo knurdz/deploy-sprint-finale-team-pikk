@@ -27,9 +27,9 @@ app.use(session({
   }
 }));
 
-// OAuth setup
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+// OAuth setup (T20 requirement)
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID; // Required by T20
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET; // Required by T20
 const GOOGLE_REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI || 'https://pikk.deploysprint-finals.knurdz.org/auth/google/callback';
 
 const startGoogleLogin = (req, res) => {
