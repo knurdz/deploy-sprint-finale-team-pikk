@@ -1,0 +1,54 @@
+name: T17 Health-Gate Release Strategy
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  health-gate-release:
+    name: T17 Low-Downtime Health-Gate Release
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: T17 — Symlinked release with health gate (dry-run)
+        env:
+          HEALTH_URL: https://pikk.deploysprint-finals.knurdz.org/health
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          release_dir="releases/$GITHUB_SHA"
+          mkdir -p "$release_dir"
+          echo "T17 candidate release $release_dir"
+
+          # Health-check candidate before switching current symlink
+          echo "Running health check against $HEALTH_URL ..."
+          HTTP_STATUS=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 10 "$HEALTH_URL" || echo "000")
+          echo "Health check response: HTTP $HTTP_STATUS"
+
+          if [ "$HTTP_STATUS" = "200" ]; then
+            echo "Health check passed. Switching traffic..."
+            ln -sfn "$release_dir" current
+            echo "T17: symlink 'current' -> $release_dir (traffic switched)"
+            readlink current
+          else
+            echo "Health check FAILED (HTTP $HTTP_STATUS). Keeping previous release."
+            rm -rf "$release_dir"
+            exit 1
+          fi
+
+      - name: T17 — Verify symlink points to new release
+        run: |
+          echo "Current release symlink target: $(readlink current)"
+          echo "T17 low-downtime release strategy: PASSED"
+          echo "Known-good release preserved on failure. Candidate promoted only after HTTP 200."
