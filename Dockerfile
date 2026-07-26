@@ -10,7 +10,7 @@ ENV NODE_ENV=production
 WORKDIR /app
 COPY team-site/package*.json ./
 RUN npm ci --omit=dev
-COPY team-site/server.js ./
+COPY team-site/server/ ./server/
 COPY --from=build /app/dist ./dist
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["node", "server/index.js"]
