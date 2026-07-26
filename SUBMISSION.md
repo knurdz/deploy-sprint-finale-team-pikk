@@ -40,7 +40,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T08 | [T08 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/11) | team-site/src/components/LearningVelocity.tsx | Rebased organizer feature branch onto main. LearningVelocity component cleanly integrated with no conflicts. |
 | T09 | [T09 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/12) | team-site/src/data/deadlines.ts | Merge conflict resolved preserving both outcomes: repo-setup-checkpoint (main) and merge-conflict-lab (conflict-merge branch) both retained. |
 | T10 | [T10 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/18) | team-site/src/components/ContactForm.tsx | Web3Forms Contact component added. Access key securely injected during build via GitHub Secrets (VITE_WEB3FORMS_ACCESS_KEY). |
-| T11 |  |  |  |
+| T11 | [T11 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/19) | .github/workflows/pr-preview.yml | Created a separate workflow that triggers on pull_request to build and upload a preview artifact matching the preview-${{ github.event.pull_request.head.sha }} naming pattern, completely isolated from production. |
 | T12 | [T12 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/16) | .github/workflows/ci.yml | npm dependency cache keyed on team-site/package-lock.json via setup-node in both lint and build jobs. npm ci used for deterministic installs. |
 | T13 |  |  |  |
 | T14 | [T14 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/17) | Dockerfile | Production Dockerfile created at root with multi-stage Node.js build and Nginx serving. |
