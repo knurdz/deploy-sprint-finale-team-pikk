@@ -30,6 +30,20 @@ jobs:
         run: npm run build
         working-directory: team-site
 
+      - name: Generate status file
+        run: |
+          cat > team-site/dist/status << 'EOF'
+          {
+            "team": "PIKK",
+            "members": ["Nirmana Pansilu", "Isiwara Mallawaarachchi", "Kavindu Mihisara", "Kavindu Jayalath"],
+            "commit": "${{ github.sha }}",
+            "release_id": "${{ github.run_id }}",
+            "deployed_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "task": "T01",
+            "public_url": "http://20.230.193.11"
+          }
+          EOF
+
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
         with:
