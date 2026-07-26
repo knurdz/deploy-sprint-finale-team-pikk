@@ -46,7 +46,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T14 | [T14 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/17) | Dockerfile | Production Dockerfile created at root with multi-stage Node.js build and Nginx serving. |
 | T15 | [T15 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/20) | team-site/src/utils/featureFlags.ts | Added a runtime feature flag (VITE_FEATURE_SHOW_INSIGHTS) to control the display of LearningVelocity. Safe, redacted evidence outputted to /status in ci.yml. |
 | T16 |  |  |  |
-| T17 |  |  |  |
+| T17 | [T17 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/25) | .github/workflows/t17-health-gate-release.yml, scripts/deploy-with-health-check.sh | Symlinked release strategy: creates releases/$SHA dir, health-checks /health before switching current symlink. Keeps previous release on failure. |
 | T18 |  |  |  |
 | T19 |  |  |  |
 | T20 |  |  |  |
