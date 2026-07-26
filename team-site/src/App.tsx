@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { CourseCard } from './components/CourseCard';
 import { DeadlineBoard } from './components/DeadlineBoard';
+import { ContactForm } from './components/ContactForm';
 import { LearningVelocity } from './components/LearningVelocity';
 import { StatCard } from './components/StatCard';
 import { courses } from './data/courses';
@@ -135,6 +136,7 @@ export function App() {
           </div>
 
           <DeadlineBoard deadlines={deadlineCards} />
+          <ContactForm />
         </section>
       </section>
     </main>
