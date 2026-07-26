@@ -120,18 +120,19 @@ jobs:
           FEATURE_SHOW_INSIGHTS: ${{ secrets.FEATURE_SHOW_INSIGHTS }}
         run: |
           set -euo pipefail
-          # Generate the runtime config JSON
+          # Generate the runtime config JSON (served at /config/feature-flags.json)
           mkdir -p team-site/dist/config
           cat > team-site/dist/config/feature-flags.json << EOF
           {
             "task": "T15",
+            "flagName": "FEATURE_SHOW_INSIGHTS",
             "showInsights": $(if [ "$FEATURE_SHOW_INSIGHTS" == "true" ]; then echo "true"; else echo "false"; fi),
             "valueRedacted": true
           }
           EOF
           
           # Add redacted evidence to status
-          jq --arg flag "${FEATURE_SHOW_INSIGHTS}" '. + {featureFlags: {task: "T15", showInsights: ($flag == "true"), valueRedacted: true}}' \
+          jq --arg flag "${FEATURE_SHOW_INSIGHTS}" '. + {featureFlags: {task: "T15", flagName: "FEATURE_SHOW_INSIGHTS", showInsights: ($flag == "true"), valueRedacted: true}}' \
             team-site/dist/status > /tmp/status2.json
           mv /tmp/status2.json team-site/dist/status
           cat team-site/dist/status
