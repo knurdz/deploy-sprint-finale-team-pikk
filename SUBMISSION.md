@@ -31,7 +31,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | Task | PR | Evidence | Notes |
 | --- | --- | --- | --- |
 | T01 | [T01 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/1) | http://20.230.193.11/status | Site live, /health 200, /status shows commit SHA and T01 marker |
-| T02 | [T02 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/10) | https://pikk.deploysprint-finals.knurdz.org | Custom domain connected, manifest verified, DNS deployed. TXT verification completed. |
+| T02 | [T02 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/21) | https://pikk.deploysprint-finals.knurdz.org | Custom domain connected, manifest verified, DNS deployed. TXT verification completed. |
 | T03 | [T03 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/4) | CI uploads site-dist-<sha>; deploy downloads it and publishes release-manifest-<sha> | deploy.yml no longer rebuilds — downloads the CI artifact and records name, commit, source run id and SHA256 digest in artifact.json |
 | T04 | [T04 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/9) | .github/workflows/rollback.yml | Rollback workflow added with workflow_dispatch to restore a known-good release_ref. Verified with diagnostic failure run. |
 | T05 | [T05 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/6) | docs/secrets.md | All secrets in GitHub Secrets only, no hardcoded values, SSH key held by organizer |
