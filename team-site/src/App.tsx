@@ -1,4 +1,5 @@
 import WeatherWidget from './components/WeatherWidget';
+import { ReleaseReadiness } from './components/ReleaseReadiness';
 import {
   Activity,
   Bell,
@@ -138,6 +139,7 @@ export function App() {
 
           <DeadlineBoard deadlines={deadlineCards} />
           <ContactForm />
+          <ReleaseReadiness />
         </section>
       </section>
     </main>

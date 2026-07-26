@@ -58,6 +58,10 @@ jobs:
         run: npm run build
         working-directory: team-site
 
+      - name: Check release readiness
+        run: npm run check:readiness
+        working-directory: team-site
+
       - name: Generate status file
         run: |
           cat > team-site/dist/status << 'EOF'
