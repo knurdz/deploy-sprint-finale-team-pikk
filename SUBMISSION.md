@@ -33,7 +33,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T01 | [T01 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/1) | http://20.230.193.11/status | Site live, /health 200, /status shows commit SHA and T01 marker |
 | T02 | [T02 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/3) | https://pikk.deploysprint-finals.knurdz.org | Custom domain connected, DNS configured |
 | T03 | [T03 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/4) | CI uploads site-dist-<sha>; deploy downloads it and publishes release-manifest-<sha> | deploy.yml no longer rebuilds — downloads the CI artifact and records name, commit, source run id and SHA256 digest in artifact.json |
-| T04 |  |  |  |
+| T04 | [T04 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/8) | team-site/Dockerfile | Multi-stage Dockerfile using node:20-alpine and nginx:alpine |
 | T05 | [T05 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/6) | docs/secrets.md | All secrets in GitHub Secrets only, no hardcoded values, SSH key held by organizer |
 | T06 | [T06 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/2) | [CI run](https://github.com/knurdz/deploy-sprint-finale-team-pikk/actions/runs/30190265308) | Lint job gates build and deploy. If lint fails, build and deploy are blocked. |
 | T07 |  |  |  |
