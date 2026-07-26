@@ -36,12 +36,12 @@ Use this section for short public notes and links. Full task instructions and ch
 | T04 | [T04 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/9) | .github/workflows/rollback.yml | Rollback workflow added with workflow_dispatch to restore a known-good release_ref. Verified with diagnostic failure run. |
 | T05 | [T05 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/6) | docs/secrets.md | All secrets in GitHub Secrets only, no hardcoded values, SSH key held by organizer |
 | T06 | [T06 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/2) | [CI run](https://github.com/knurdz/deploy-sprint-finale-team-pikk/actions/runs/30190265308) | Lint job gates build and deploy. If lint fails, build and deploy are blocked. |
-| T07 |  |  |  |
+| T07 | [T07 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/14) | team-site/src/components/WeatherWidget.tsx | OpenWeather API widget added, fetches weather data and displays it on the site. |
 | T08 | [T08 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/11) | team-site/src/components/LearningVelocity.tsx | Rebased organizer feature branch onto main. LearningVelocity component cleanly integrated with no conflicts. |
 | T09 | [T09 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/12) | team-site/src/data/deadlines.ts | Merge conflict resolved preserving both outcomes: repo-setup-checkpoint (main) and merge-conflict-lab (conflict-merge branch) both retained. |
 | T10 |  |  |  |
 | T11 |  |  |  |
-| T12 |  |  |  |
+| T12 | [T12 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/16) | .github/workflows/ci.yml | npm dependency cache keyed on team-site/package-lock.json via setup-node in both lint and build jobs. npm ci used for deterministic installs. |
 | T13 |  |  |  |
 | T14 | [T14 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/13) | team-site/Dockerfile | Production Dockerfile created using multi-stage Node.js and Nginx serving. Local build and container verification passed. |
 | T15 |  |  |  |
