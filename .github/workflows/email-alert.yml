@@ -4,6 +4,7 @@ name: Email Alert (Resend)
 # From:      alerts@knurdz.org  (RESEND_FROM_EMAIL secret)
 # Recipient: judges@knurdz.org  (ALERT_RECIPIENT_EMAIL secret)
 # Evidence:  email-alert-evidence-<sha>.json artifact + /status emailAlert field
+# Note: trigger re-evaluation
 
 on:
   workflow_run:
