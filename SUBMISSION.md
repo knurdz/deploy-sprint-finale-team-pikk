@@ -55,7 +55,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T23 |  |  |  |
 | T24 |  |  |  |
 | T25 |  |  |  |
-| T26 |  |  |  |
+| T26 | [T26 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/36) | .github/workflows/deploy-broken.yml, Actions runs #30198747435 (broken) + #30198775068 (fixed) | Root cause: npm ci ran at repo root (no package-lock.json) and artifact path pointed to build instead of dist. Fix: added working-directory: team-site and corrected artifact path to team-site/dist. Recovery run succeeded. |
 | T27 |  |  |  |
 | T28 |  |  |  |
 | T29 |  |  |  |
