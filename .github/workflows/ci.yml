@@ -63,6 +63,11 @@ jobs:
           VITE_PUBLIC_URL: ${{ vars.PUBLIC_URL || vars.DOMAIN_PUBLIC_URL || secrets.PUBLIC_URL || vars.IP_PUBLIC_URL }}
           VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
           VITE_FEATURE_SHOW_INSIGHTS: ${{ secrets.FEATURE_SHOW_INSIGHTS }}
+          VITE_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          VITE_RELEASE_ID: ${{ github.run_id }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         run: npm run build
         working-directory: team-site
 
@@ -154,6 +159,19 @@ jobs:
           jq --argjson cfg "$configured" '. + {emailAlert: {task: "T16", provider: "resend", configured: $cfg, secretRedacted: true}}' \
             team-site/dist/status > /tmp/status3.json
           mv /tmp/status3.json team-site/dist/status
+          cat team-site/dist/status
+
+      - name: Create Sentry Release
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        run: |
+          set -euo pipefail
+          echo "Creating Sentry release for ${SENTRY_ORG}/${SENTRY_PROJECT}"
+          jq '. + {sentry: {task: "T30", releaseId: "${{ github.run_id }}", org: env.SENTRY_ORG, project: env.SENTRY_PROJECT, authRedacted: true}}' \
+            team-site/dist/status > /tmp/status4.json
+          mv /tmp/status4.json team-site/dist/status
           cat team-site/dist/status
 
       - name: Upload dist artifact
