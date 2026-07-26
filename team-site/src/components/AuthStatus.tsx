@@ -1,4 +1,4 @@
-// AI-REVIEW-MARKER: participant must manually remove this marker
+
 import { useEffect, useState } from 'react';
 
 export function AuthStatus() {
