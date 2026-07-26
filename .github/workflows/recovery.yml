@@ -10,6 +10,8 @@ on:
 jobs:
   recover:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Log recovery attempt
         run: echo "T29 restore ${{ inputs.recovery_ref }} through Actions only"
