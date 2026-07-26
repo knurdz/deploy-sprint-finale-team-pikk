@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: request-organizer-deploy
@@ -62,6 +63,37 @@ jobs:
             echo "source_run_id=$source_run_id"
           } >> "$GITHUB_OUTPUT"
 
+      - name: Download CI artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist-${{ steps.request.outputs.sha }}
+          path: ./release-candidate
+          run-id: ${{ steps.request.outputs.source_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Record artifact identity
+        env:
+          ARTIFACT_SHA: ${{ steps.request.outputs.sha }}
+          SOURCE_RUN_ID: ${{ steps.request.outputs.source_run_id }}
+        run: |
+          set -euo pipefail
+          digest="$(find release-candidate -type f -exec sha256sum {} \; | sort -k2 | sha256sum | cut -d' ' -f1)"
+          cat > release-candidate/artifact.json <<EOF
+          {
+            "task": "T03",
+            "artifact": "site-dist-${ARTIFACT_SHA}",
+            "commit": "${ARTIFACT_SHA}",
+            "source_run_id": "${SOURCE_RUN_ID}",
+            "dist_digest_sha256": "${digest}"
+          }
+          EOF
+          cat release-candidate/artifact.json
+
+      - name: Upload release manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-manifest-${{ steps.request.outputs.sha }}
+          path: release-candidate/artifact.json
       - name: Request deploy from organizer deployer
         env:
           DEPLOYER_DISPATCH_TOKEN: ${{ secrets.DEPLOYER_DISPATCH_TOKEN }}
