@@ -3,6 +3,7 @@ name: Email Alert (Resend)
 # RESEND_API_KEY is read from GitHub Secrets only — never committed or logged.
 # From:      alerts@knurdz.org  (RESEND_FROM_EMAIL secret)
 # Recipient: judges@knurdz.org  (ALERT_RECIPIENT_EMAIL secret)
+# Evidence:  email-alert-evidence-<sha>.json artifact + /status emailAlert field
 
 on:
   workflow_run:
