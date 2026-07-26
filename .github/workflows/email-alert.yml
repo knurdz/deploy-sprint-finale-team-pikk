@@ -172,7 +172,6 @@ jobs:
           EOF
           cat /tmp/email-evidence/email-alert-status.json
 
-        # AI-REVIEW-MARKER: participant must manually remove this marker
       - name: Upload evidence
         if: always()
         uses: actions/upload-artifact@v4
