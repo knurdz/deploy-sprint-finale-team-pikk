@@ -2,5 +2,6 @@
   "domain": {
     "connected": true
   },
-  "domain.connected": true
+  "domain.connected": true,
+  "assignedDomain": "pikk.deploysprint-finals.knurdz.org"
 }
