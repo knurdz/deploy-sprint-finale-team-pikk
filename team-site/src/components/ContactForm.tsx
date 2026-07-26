@@ -10,8 +10,9 @@ export function ContactForm() {
     const formData = new FormData(form);
     
     // Add the Web3Forms access key
-    // Using import.meta.env if provided, otherwise falling back to the direct key for the hackathon
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '8d45e3be-3f44-4bc3-80ad-eea0201892be';
+    // accessKeyStoredInSecret
+    // provider web3forms contact configured
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
     formData.append('access_key', accessKey);
 
     try {
