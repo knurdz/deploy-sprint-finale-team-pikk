@@ -56,6 +56,22 @@ export function App() {
           <ShieldCheck size={18} />
           <p>Repository changes are reviewed before every release.</p>
         </div>
+
+        <div
+          className="sidebarPanel"
+          style={{
+            marginTop: '8px',
+            background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+            color: '#fff',
+            borderRadius: '8px',
+            padding: '10px 12px',
+          }}
+        >
+          <strong style={{ display: 'block', fontSize: '13px', letterSpacing: '0.05em' }}>
+            ⚡ TEAM PIKK
+          </strong>
+          <span style={{ fontSize: '11px', opacity: 0.85 }}>Deploy Sprint Finale</span>
+        </div>
       </aside>
 
       <section className="workspace">
