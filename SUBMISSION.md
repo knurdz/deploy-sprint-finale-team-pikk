@@ -44,7 +44,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T12 | [T12 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/16) | .github/workflows/ci.yml | npm dependency cache keyed on team-site/package-lock.json via setup-node in both lint and build jobs. npm ci used for deterministic installs. |
 | T13 |  |  |  |
 | T14 | [T14 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/17) | Dockerfile | Production Dockerfile created at root with multi-stage Node.js build and Nginx serving. |
-| T15 |  |  |  |
+| T15 | [T15 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/20) | team-site/src/utils/featureFlags.ts | Added a runtime feature flag (VITE_FEATURE_SHOW_INSIGHTS) to control the display of LearningVelocity. Safe, redacted evidence outputted to /status in ci.yml. |
 | T16 |  |  |  |
 | T17 |  |  |  |
 | T18 |  |  |  |
