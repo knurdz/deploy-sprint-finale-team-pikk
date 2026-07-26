@@ -111,11 +111,22 @@ jobs:
           mv /tmp/status.json team-site/dist/status
           cat team-site/dist/status
 
-      - name: Add feature flag evidence to status
+      - name: Add feature flag evidence to status and config
         env:
           FEATURE_SHOW_INSIGHTS: ${{ secrets.FEATURE_SHOW_INSIGHTS }}
         run: |
           set -euo pipefail
+          # Generate the runtime config JSON
+          mkdir -p team-site/dist/config
+          cat > team-site/dist/config/feature-flags.json << EOF
+          {
+            "task": "T15",
+            "showInsights": $(if [ "$FEATURE_SHOW_INSIGHTS" == "true" ]; then echo "true"; else echo "false"; fi),
+            "valueRedacted": true
+          }
+          EOF
+          
+          # Add redacted evidence to status
           jq --arg flag "${FEATURE_SHOW_INSIGHTS}" '. + {featureFlags: {task: "T15", showInsights: ($flag == "true"), valueRedacted: true}}' \
             team-site/dist/status > /tmp/status2.json
           mv /tmp/status2.json team-site/dist/status

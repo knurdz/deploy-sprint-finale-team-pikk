@@ -19,10 +19,17 @@ import { courses } from './data/courses';
 import { deadlineCards } from './data/deadlines';
 import { sprintStats } from './data/stats';
 import { getAverageProgress } from './utils/metrics';
-import { featureFlags } from './utils/featureFlags';
+import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { fetchFeatureFlags } from './utils/featureFlags';
 
 export function App() {
   const averageProgress = getAverageProgress(courses);
+  const [flags, setFlags] = useState({ showInsights: false });
+
+  useEffect(() => {
+    fetchFeatureFlags().then(setFlags);
+  }, []);
 
   return (
     <main className="shell">
@@ -117,7 +124,7 @@ export function App() {
           ))}
         </section>
 
-        {featureFlags().showInsights && <LearningVelocity courses={courses} />}
+        {flags.showInsights && <LearningVelocity courses={courses} />}
 
         <section className="contentGrid">
           <div className="panel" id="courses">
