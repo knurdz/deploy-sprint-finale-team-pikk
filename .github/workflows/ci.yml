@@ -27,6 +27,14 @@ jobs:
         run: npm ci
         working-directory: team-site
 
+      - name: Secret Scan (T27)
+        run: |
+          if rg '-----BEGIN .*PRIVATE KEY-----|github_pat_|ghp_|GOCSPX-' .; then
+            echo "T27 secret pattern found"
+            exit 1
+          fi
+          echo "T27 secret scan passed"
+
       - name: Lint (TypeScript type check)
         run: npm run lint
         working-directory: team-site
