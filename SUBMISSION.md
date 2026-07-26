@@ -53,7 +53,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T21 |  |  |  |
 | T22 | [T22 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/28) | docker-compose.yml, .env.example, .github/workflows/t22-compose.yml | Compose configuration added with project name deploy-sprint-pikk. Uses placeholder environment variables to avoid committing real secrets. Validated via Actions. |
 | T23 |  |  |  |
-| T24 |  |  |  |
+| T24 | [T24 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/37) | team-site/src/components/ContactForm.tsx | Cloudflare Turnstile integrated into ContactForm with server-side token validation. |
 | T25 |  |  |  |
 | T26 | [T26 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/36) | .github/workflows/deploy-broken.yml, Actions runs #30198747435 (broken) + #30198775068 (fixed) | Root cause: npm ci ran at repo root (no package-lock.json) and artifact path pointed to build instead of dist. Fix: added working-directory: team-site and corrected artifact path to team-site/dist. Recovery run succeeded. |
 | T27 |  |  |  |
