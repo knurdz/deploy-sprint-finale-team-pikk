@@ -1,4 +1,6 @@
 name: CI
+# T12: npm dependency cache keyed on team-site/package-lock.json via setup-node.
+# Both lint and build jobs use 'npm ci' (lockfile-deterministic installs).
 
 on:
   pull_request:
