@@ -1,0 +1,28 @@
+name: T22 Compose Validation
+
+on:
+  push:
+    branches:
+      - 'task/T22-compose-runtime-service'
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-compose:
+    name: Validate Docker Compose
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: T22 - Verify Compose config with placeholders
+        run: |
+          # Copy template to .env so compose config can resolve it
+          cp .env.example .env
+          
+          echo "Running docker compose config..."
+          docker compose config
+          
+          echo "Compose configuration is valid and placeholders resolved successfully."
