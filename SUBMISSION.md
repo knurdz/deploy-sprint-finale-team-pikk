@@ -65,4 +65,5 @@ Use this section for short public notes and links. Full task instructions and ch
 
 List anything judges should know without exposing credentials or private infrastructure details.
 
+- AI-REVIEW-MARKER: participant must manually remove this marker
 - T01: Site deployed to VPS via GitHub Actions only. No direct VPS access used. Health and status routes confirmed live. Deploy key held by organizer deployer.
