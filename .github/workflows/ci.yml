@@ -68,6 +68,45 @@ jobs:
           }
           EOF
 
+      - name: Fetch weather data
+        env:
+          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+          OPENWEATHER_CITY: ${{ vars.OPENWEATHER_CITY }}
+        run: |
+          set -euo pipefail
+          mkdir -p team-site/dist/api
+          city="${OPENWEATHER_CITY:-Colombo}"
+          http_code="$(curl -sS -o /tmp/ow.json -w '%{http_code}' \
+            --get "https://api.openweathermap.org/data/2.5/weather" \
+            --data-urlencode "q=${city}" \
+            --data-urlencode "units=metric" \
+            --data-urlencode "appid=${OPENWEATHER_API_KEY}")"
+          if [ "$http_code" != "200" ]; then
+            echo "OpenWeather request failed with HTTP ${http_code}"
+            exit 1
+          fi
+          jq --arg city "$city" --arg fetched "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '{
+            provider: "openweather",
+            task: "T07",
+            city: $city,
+            fetched_at: $fetched,
+            temperature_c: .main.temp,
+            feels_like_c: .main.feels_like,
+            humidity: .main.humidity,
+            conditions: .weather[0].main,
+            description: .weather[0].description,
+            icon: .weather[0].icon
+          }' /tmp/ow.json > team-site/dist/api/weather
+          cat team-site/dist/api/weather
+
+      - name: Add weather provider evidence to status
+        run: |
+          set -euo pipefail
+          jq '. + {weather: {provider: "openweather", endpoint: "/api/weather", key_exposed: false}}' \
+            team-site/dist/status > /tmp/status.json
+          mv /tmp/status.json team-site/dist/status
+          cat team-site/dist/status
+
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
         with:

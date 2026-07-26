@@ -1,3 +1,4 @@
+import WeatherWidget from './components/WeatherWidget';
 import {
   Activity,
   Bell,
@@ -105,6 +106,7 @@ export function App() {
             <GitBranch size={32} />
             <span>4 active learning tracks</span>
           </div>
+          <WeatherWidget />
         </section>
 
         <section className="statGrid" aria-label="Sprint statistics">
