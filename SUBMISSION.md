@@ -43,7 +43,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T11 |  |  |  |
 | T12 |  |  |  |
 | T13 |  |  |  |
-| T14 |  |  |  |
+| T14 | [T14_PR](URL_TO_PR) | N/A | Production Dockerfile created with multi-stage build and Nginx serving; container build verification passed. |
 | T15 |  |  |  |
 | T16 |  |  |  |
 | T17 |  |  |  |
