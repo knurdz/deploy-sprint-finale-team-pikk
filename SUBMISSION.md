@@ -51,7 +51,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T19 |  |  |  |
 | T20 |  |  |  |
 | T21 |  |  |  |
-| T22 |  |  |  |
+| T22 | [T22 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/28) | docker-compose.yml, .env.example, .github/workflows/t22-compose.yml | Compose configuration added with project name deploy-sprint-pikk. Uses placeholder environment variables to avoid committing real secrets. Validated via Actions. |
 | T23 |  |  |  |
 | T24 |  |  |  |
 | T25 |  |  |  |
