@@ -45,7 +45,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T13 | [T13 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/23) | team-site/src/components/ReleaseReadiness.tsx, team-site/src/data/releaseReadiness.ts, team-site/scripts/check-release-readiness.mjs | Feature bundle applied from task-assets/feature-bundle. ReleaseReadiness component integrated into App.tsx. Validation script added to CI. Build passes. |
 | T14 | [T14 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/17) | Dockerfile | Production Dockerfile created at root with multi-stage Node.js build and Nginx serving. |
 | T15 | [T15 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/20) | team-site/src/utils/featureFlags.ts | Added a runtime feature flag (VITE_FEATURE_SHOW_INSIGHTS) to control the display of LearningVelocity. Safe, redacted evidence outputted to /status in ci.yml. |
-| T16 |  |  |  |
+| T16 | [T16 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/27) | .github/workflows/email-alert.yml, /status emailAlert field | GitHub Actions workflow calls Resend API at deploy time via curl. RESEND_API_KEY in GitHub Secrets only. /status shows provider=resend, configured=true, secretRedacted=true. Email sent to judges@knurdz.org from alerts@knurdz.org. |
 | T17 | [T17 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/25) | .github/workflows/t17-health-gate-release.yml, scripts/deploy-with-health-check.sh | Symlinked release strategy: creates releases/$SHA dir, health-checks /health before switching current symlink. Keeps previous release on failure. |
 | T18 |  |  |  |
 | T19 |  |  |  |

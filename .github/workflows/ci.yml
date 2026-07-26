@@ -136,6 +136,18 @@ jobs:
             team-site/dist/status > /tmp/status2.json
           mv /tmp/status2.json team-site/dist/status
           cat team-site/dist/status
+      - name: Add email alert evidence to status
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          set -euo pipefail
+          configured="false"
+          [ -n "${RESEND_API_KEY:-}" ] && configured="true"
+          jq --argjson cfg "$configured" '. + {emailAlert: {task: "T16", provider: "resend", configured: $cfg, secretRedacted: true}}' \
+            team-site/dist/status > /tmp/status3.json
+          mv /tmp/status3.json team-site/dist/status
+          cat team-site/dist/status
+
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
         with:
