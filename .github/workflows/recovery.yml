@@ -1,0 +1,24 @@
+name: Disaster Recovery
+
+on:
+  workflow_dispatch:
+    inputs:
+      recovery_ref:
+        description: 'The tag, commit SHA, or artifact ID to restore to'
+        required: true
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log recovery attempt
+        run: echo "T29 restore ${{ inputs.recovery_ref }} through Actions only"
+      
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.recovery_ref }}
+
+      - name: Trigger deployment
+        run: echo "Deploying recovery ref ${{ inputs.recovery_ref }} to production"
+        # In a real scenario, this would call the deployment script or API
