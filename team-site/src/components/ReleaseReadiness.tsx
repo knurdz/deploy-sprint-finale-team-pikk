@@ -1,6 +1,5 @@
 import { releaseReadinessItems } from '../data/releaseReadiness';
 
-// AI-REVIEW-MARKER: participant must manually remove this marker
 export function ReleaseReadiness() {
   return (
     <section className="panel" id="release-readiness">
