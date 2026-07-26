@@ -31,7 +31,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | Task | PR | Evidence | Notes |
 | --- | --- | --- | --- |
 | T01 | [T01 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/1) | http://20.230.193.11/status | Site live, /health 200, /status shows commit SHA and T01 marker |
-| T02 | [T02 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/3) | https://pikk.deploysprint-finals.knurdz.org | Custom domain connected, DNS configured |
+| T02 | (Leave blank for now) | Custom domain connected, manifest verified, DNS deployed. |
 | T03 |  |  |  |
 | T04 |  |  |  |
 | T05 | [T05 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/5) | docs/secrets.md | All secrets in GitHub Secrets only, no hardcoded values, SSH key held by organizer |
