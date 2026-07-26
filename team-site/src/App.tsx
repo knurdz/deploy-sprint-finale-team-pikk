@@ -22,6 +22,7 @@ import { sprintStats } from './data/stats';
 import { getAverageProgress } from './utils/metrics';
 import { useEffect, useState } from 'react';
 import { fetchFeatureFlags } from './utils/featureFlags';
+import { AuthStatus } from './components/AuthStatus';
 
 export function App() {
   const averageProgress = getAverageProgress(courses);
@@ -97,9 +98,12 @@ export function App() {
             <input aria-label="Search courses" placeholder="Search courses" />
           </label>
 
-          <button className="iconButton" aria-label="Notifications">
-            <Bell size={20} />
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <button className="iconButton" aria-label="Notifications">
+              <Bell size={20} />
+            </button>
+            <AuthStatus />
+          </div>
         </header>
 
         <section className="heroBand" id="overview">
