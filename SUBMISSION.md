@@ -31,19 +31,19 @@ Use this section for short public notes and links. Full task instructions and ch
 | Task | PR | Evidence | Notes |
 | --- | --- | --- | --- |
 | T01 | [T01 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/1) | http://20.230.193.11/status | Site live, /health 200, /status shows commit SHA and T01 marker |
-| T02 | (Leave blank for now) | Custom domain connected, manifest verified, DNS deployed. |
-| T03 |  |  |  |
-| T04 |  |  |  |
-| T05 | [T05 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/5) | docs/secrets.md | All secrets in GitHub Secrets only, no hardcoded values, SSH key held by organizer |
+| T02 | [T02 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/10) | https://pikk.deploysprint-finals.knurdz.org | Custom domain connected, manifest verified, DNS deployed. |
+| T03 | [T03 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/4) | CI uploads site-dist-<sha>; deploy downloads it and publishes release-manifest-<sha> | deploy.yml no longer rebuilds — downloads the CI artifact and records name, commit, source run id and SHA256 digest in artifact.json |
+| T04 | [T04 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/9) | .github/workflows/rollback.yml | Rollback workflow added with workflow_dispatch to restore a known-good release_ref. Verified with diagnostic failure run. |
+| T05 | [T05 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/6) | docs/secrets.md | All secrets in GitHub Secrets only, no hardcoded values, SSH key held by organizer |
 | T06 | [T06 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/2) | [CI run](https://github.com/knurdz/deploy-sprint-finale-team-pikk/actions/runs/30190265308) | Lint job gates build and deploy. If lint fails, build and deploy are blocked. |
-| T07 |  |  |  |
-| T08 |  |  |  |
-| T09 |  |  |  |
+| T07 | [T07 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/14) | team-site/src/components/WeatherWidget.tsx | OpenWeather API widget added, fetches weather data and displays it on the site. |
+| T08 | [T08 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/11) | team-site/src/components/LearningVelocity.tsx | Rebased organizer feature branch onto main. LearningVelocity component cleanly integrated with no conflicts. |
+| T09 | [T09 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/12) | team-site/src/data/deadlines.ts | Merge conflict resolved preserving both outcomes: repo-setup-checkpoint (main) and merge-conflict-lab (conflict-merge branch) both retained. |
 | T10 |  |  |  |
 | T11 |  |  |  |
-| T12 |  |  |  |
+| T12 | [T12 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/16) | .github/workflows/ci.yml | npm dependency cache keyed on team-site/package-lock.json via setup-node in both lint and build jobs. npm ci used for deterministic installs. |
 | T13 |  |  |  |
-| T14 |  |  |  |
+| T14 | [T14 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/17) | Dockerfile | Production Dockerfile created at root with multi-stage Node.js build and Nginx serving. |
 | T15 |  |  |  |
 | T16 |  |  |  |
 | T17 |  |  |  |
