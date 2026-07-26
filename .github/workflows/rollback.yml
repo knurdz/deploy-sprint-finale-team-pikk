@@ -34,6 +34,11 @@ jobs:
         run: |
           set -euo pipefail
 
+          if [ "${TEAM_SHA}" = "fail" ]; then
+            echo "Intentional diagnostic failure"
+            exit 1
+          fi
+
           if [ -z "$DEPLOYER_DISPATCH_TOKEN" ]; then
             echo "DEPLOYER_DISPATCH_TOKEN is not configured."
             exit 1
