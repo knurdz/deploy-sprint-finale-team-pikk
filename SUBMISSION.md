@@ -35,7 +35,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T03 |  |  |  |
 | T04 |  |  |  |
 | T05 |  |  |  |
-| T06 |  |  |  |
+| T06 | [T06 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/2) | [CI run](https://github.com/knurdz/deploy-sprint-finale-team-pikk/actions/runs/30190265308) | Lint job gates build and deploy. If lint fails, build and deploy are blocked. |
 | T07 |  |  |  |
 | T08 |  |  |  |
 | T09 |  |  |  |
