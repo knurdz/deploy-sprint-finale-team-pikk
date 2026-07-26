@@ -4,19 +4,19 @@ Complete this file on `main` as tasks are completed. Do not paste secrets, priva
 
 ## Team
 
-- Team name:
-- Team members:
-- Live IP URL:
-- Assigned domain URL:
-- Repository URL:
+- Team name: PIKK
+- Team members: Nirmana Pansilu, Isiwara Mallawaarachchi, Kavindu Mihisara, Kavindu Jayalath
+- Live IP URL: http://20.230.193.11
+- Assigned domain URL: https://pikk.deploysprint-finals.knurdz.org
+- Repository URL: https://github.com/knurdz/deploy-sprint-finale-team-pikk
 
 ## Release Evidence
 
-- Current production commit:
-- Current artifact/image identifier:
-- Current deployment workflow run:
-- Current release manifest path or URL:
-- Notes on live evidence or fallback evidence:
+- Current production commit: a7146ef4e6d43f44452afa660c2d74bc9a41ce8e
+- Current artifact/image identifier: site-dist-a7146ef4e6d43f44452afa660c2d74bc9a41ce8e
+- Current deployment workflow run: 30189666360
+- Current release manifest path or URL: http://20.230.193.11/status
+- Notes on live evidence or fallback evidence: Live site at http://20.230.193.11 — /health returns HTTP 200, /status returns JSON with commit SHA and T01 marker. Deployed via GitHub Actions deploy.yml after CI passed on main.
 
 ## Score Summary
 
@@ -30,7 +30,7 @@ Use this section for short public notes and links. Full task instructions and ch
 
 | Task | PR | Evidence | Notes |
 | --- | --- | --- | --- |
-| T01 |  |  |  |
+| T01 | [T01 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/1) | http://20.230.193.11/status | Site live, /health 200, /status shows commit SHA and T01 marker |
 | T02 |  |  |  |
 | T03 |  |  |  |
 | T04 |  |  |  |
@@ -64,3 +64,5 @@ Use this section for short public notes and links. Full task instructions and ch
 ## Public Notes
 
 List anything judges should know without exposing credentials or private infrastructure details.
+
+- T01: Site deployed to VPS via GitHub Actions only. No direct VPS access used. Health and status routes confirmed live. Deploy key held by organizer deployer.
