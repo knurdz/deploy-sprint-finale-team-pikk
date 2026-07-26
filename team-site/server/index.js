@@ -15,6 +15,43 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 
+// Turnstile Status (T24 requirement)
+export const turnstileStatus = {
+  task: 'T24',
+  provider: 'cloudflare-turnstile',
+  siteKeyPublic: true,
+  secretKeyServerOnly: Boolean(process.env.TURNSTILE_SECRET_KEY),
+  secretRedacted: true,
+};
+
+app.post('/api/verify-turnstile', async (req, res) => {
+  const { token } = req.body;
+  const secretKey = process.env.TURNSTILE_SECRET_KEY;
+
+  if (!secretKey) {
+    return res.status(500).json({ success: false, error: 'Server configuration error' });
+  }
+
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        secret: secretKey,
+        response: token
+      })
+    });
+    const data = await response.json();
+    if (data.success) {
+      res.json({ success: true, turnstileStatus });
+    } else {
+      res.status(400).json({ success: false, error: 'Verification failed' });
+    }
+  } catch (err) {
+    res.status(500).json({ success: false, error: 'Internal error' });
+  }
+});
+
 // Session setup
 app.use(session({
   secret: process.env.SESSION_SECRET || 'fallback-secret-for-dev',

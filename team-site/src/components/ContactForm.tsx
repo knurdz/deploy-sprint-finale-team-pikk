@@ -1,3 +1,4 @@
+// AI-REVIEW-MARKER: participant must manually remove this marker
 import { useState } from 'react';
 import { Send } from 'lucide-react';
 
@@ -9,14 +10,33 @@ export function ContactForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     
-    // Add the Web3Forms access key
-    // accessKeyStoredInSecret
-    // provider web3forms contact configured
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-    formData.append('access_key', accessKey);
+    const turnstileToken = formData.get('cf-turnstile-response');
+    if (!turnstileToken) {
+      setStatus('Please complete the security check.');
+      return;
+    }
 
     try {
-      setStatus('Sending...');
+      setStatus('Verifying security check...');
+      const verifyRes = await fetch('/api/verify-turnstile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: turnstileToken }),
+      });
+      const verifyData = await verifyRes.json();
+      
+      if (!verifyData.success) {
+        setStatus('Security check failed. Please try again.');
+        return;
+      }
+
+      // Add the Web3Forms access key
+      // accessKeyStoredInSecret
+      // provider web3forms contact configured
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      formData.append('access_key', accessKey);
+
+      setStatus('Sending message...');
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formData,
@@ -73,6 +93,8 @@ export function ContactForm() {
           rows={4} 
           style={{ padding: '10px', borderRadius: '6px', border: '1px solid #cfdac4', background: '#f7f3eb', resize: 'vertical' }} 
         />
+        
+        <div className="cf-turnstile" data-sitekey="0x4AAAAAAAplaceholder-replace-me"></div>
         
         <button 
           type="submit" 
