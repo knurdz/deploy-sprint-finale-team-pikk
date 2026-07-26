@@ -39,7 +39,7 @@ Use this section for short public notes and links. Full task instructions and ch
 | T07 | [T07 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/14) | team-site/src/components/WeatherWidget.tsx | OpenWeather API widget added, fetches weather data and displays it on the site. |
 | T08 | [T08 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/11) | team-site/src/components/LearningVelocity.tsx | Rebased organizer feature branch onto main. LearningVelocity component cleanly integrated with no conflicts. |
 | T09 | [T09 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/12) | team-site/src/data/deadlines.ts | Merge conflict resolved preserving both outcomes: repo-setup-checkpoint (main) and merge-conflict-lab (conflict-merge branch) both retained. |
-| T10 |  |  |  |
+| T10 | [T10 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/18) | team-site/src/components/ContactForm.tsx | Web3Forms Contact component added. Access key securely injected during build via GitHub Secrets (VITE_WEB3FORMS_ACCESS_KEY). |
 | T11 |  |  |  |
 | T12 | [T12 PR](https://github.com/knurdz/deploy-sprint-finale-team-pikk/pull/16) | .github/workflows/ci.yml | npm dependency cache keyed on team-site/package-lock.json via setup-node in both lint and build jobs. npm ci used for deterministic installs. |
 | T13 |  |  |  |
